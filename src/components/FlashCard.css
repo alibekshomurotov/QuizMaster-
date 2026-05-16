@@ -1,0 +1,106 @@
+.flashcard-container {
+  perspective: 1000px;
+  margin: 20px 0;
+}
+
+.flashcard {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 20px;
+}
+
+.front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: rotateY(0deg);
+}
+
+.back {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.front h3, .back h3 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.front p, .back p {
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.front small {
+  margin-top: 30px;
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.known-btn, .delete-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.known-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.known-btn:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #da190b;
+  transform: scale(1.05);
+}
+
+.known-badge {
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
