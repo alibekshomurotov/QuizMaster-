@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AuthModal.css';
 
-const AuthModal = ({ isOpen, onClose, onLogin, onSignUp }) => {
-  const [isLogin, setIsLogin] = useState(true);
+const AuthModal = ({ isOpen, onClose, onLogin, onSignUp, initialIsLogin = true }) => {
+  const [isLogin, setIsLogin] = useState(initialIsLogin);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
+  useEffect(() => {
+    if (!isOpen) {
+      setEmail('');
+      setPassword('');
+      setName('');
+    } else {
+      setIsLogin(initialIsLogin);
+    }
+  }, [isOpen, initialIsLogin]);
 
   if (!isOpen) return null;
 
@@ -14,7 +24,11 @@ const AuthModal = ({ isOpen, onClose, onLogin, onSignUp }) => {
     if (isLogin) {
       onLogin(email, password);
     } else {
-      onSignUp(email, password, name);
+      if (name.trim()) {
+        onSignUp(email, password, name);
+      } else {
+        alert("Iltimos, ismingizni kiriting!");
+      }
     }
   };
 
@@ -24,9 +38,9 @@ const AuthModal = ({ isOpen, onClose, onLogin, onSignUp }) => {
         <button className="modal-close" onClick={onClose}>×</button>
         
         <div className="modal-header">
-          <div className="modal-icon">🔐</div>
-          <h2>{isLogin ? 'Kirish' : 'Ro\'yxatdan o\'tish'}</h2>
-          <p>{isLogin ? 'Hisobingizga kiring' : 'Yangi hisob yarating'}</p>
+          <div className="modal-icon">{isLogin ? '🔐' : '✏️'}</div>
+          <h2>{isLogin ? 'Kirish' : "Ro'yxatdan o'tish"}</h2>
+          <p>{isLogin ? 'Hisobingizga kiring' : "Yangi hisob yarating"}</p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -66,13 +80,17 @@ const AuthModal = ({ isOpen, onClose, onLogin, onSignUp }) => {
           </div>
           
           <button type="submit" className="submit-auth-btn">
-            {isLogin ? 'Kirish' : 'Ro\'yxatdan o\'tish'}
+            {isLogin ? 'Kirish' : "Ro'yxatdan o'tish"}
           </button>
         </form>
         
         <div className="modal-footer">
-          <button onClick={() => setIsLogin(!isLogin)} className="switch-mode-btn">
-            {isLogin ? 'Hisobingiz yo\'qmi? Ro\'yxatdan o\'ting' : 'Hisobingiz bormi? Kirish'}
+          <button 
+            type="button"
+            onClick={() => setIsLogin(!isLogin)} 
+            className="switch-mode-btn"
+          >
+            {isLogin ? "Hisobingiz yo'qmi? Ro'yxatdan o'ting" : "Hisobingiz bormi? Kirish"}
           </button>
         </div>
       </div>

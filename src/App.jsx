@@ -17,6 +17,7 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [testCompleted, setTestCompleted] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentQuestions, setCurrentQuestions] = useState([]);
@@ -334,6 +335,7 @@ const App = () => {
     };
   };
 
+  // LOGIN FUNKSIYALARI
   const handleLogin = (email, password) => {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const user = users.find(u => u.email === email && u.password === password);
@@ -388,6 +390,12 @@ const App = () => {
     if (savedAchievements) setAchievements(JSON.parse(savedAchievements));
   };
 
+  // Auth modalni ochish
+  const openAuthModal = (mode) => {
+    setAuthMode(mode);
+    setShowAuthModal(true);
+  };
+
   const Confetti = () => {
     if (!showConfetti) return null;
     return (
@@ -409,7 +417,7 @@ const App = () => {
     );
   };
 
-  // SELECT MODE - TESTLAR BIRINCHI
+  // SELECT MODE - ASOSIY SAHIFA
   if (mode === 'select') {
     return (
       <div className={`app ${darkMode ? 'dark' : ''}`}>
@@ -417,7 +425,7 @@ const App = () => {
         
         <nav className="navbar">
           <div className="nav-brand">
-            <span className="logo">📚 SmartLearn</span>
+            <span className="logo">🎯 SmartTest</span>
           </div>
           
           <div className="nav-controls">
@@ -434,8 +442,12 @@ const App = () => {
               </div>
             ) : (
               <div className="auth-buttons">
-                <button onClick={() => setShowAuthModal(true)} className="login-btn">Kirish</button>
-                <button onClick={() => setShowAuthModal(true)} className="signup-btn">Ro'yxatdan o'tish</button>
+                <button onClick={() => openAuthModal('login')} className="login-btn">
+                  Kirish
+                </button>
+                <button onClick={() => openAuthModal('signup')} className="signup-btn">
+                  Ro'yxatdan o'tish
+                </button>
               </div>
             )}
           </div>
@@ -443,7 +455,14 @@ const App = () => {
 
         <Achievements isOpen={showAchievements} onClose={() => setShowAchievements(false)} achievements={achievements} />
         <Leaderboard isOpen={showLeaderboard} onClose={() => setShowLeaderboard(false)} leaderboard={leaderboard} currentUser={currentUser} />
-        <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} onLogin={handleLogin} onSignUp={handleSignUp} />
+        
+        <AuthModal 
+          isOpen={showAuthModal} 
+          onClose={() => setShowAuthModal(false)}
+          onLogin={handleLogin}
+          onSignUp={handleSignUp}
+          initialIsLogin={authMode === 'login'}
+        />
 
         <div className="hero-section">
           <h1>🎓 Bilimlaringizni Mustahkamlang</h1>
@@ -531,7 +550,7 @@ const App = () => {
       <div className={`app ${darkMode ? 'dark' : ''}`}>
         <nav className="navbar">
           <div className="nav-brand" onClick={() => setMode('select')} style={{cursor: 'pointer'}}>
-            <span className="logo">📚 SmartLearn</span>
+            <span className="logo">🎯 SmartTest</span>
           </div>
           <div className="nav-controls">
             <button onClick={() => setDarkMode(!darkMode)} className="icon-btn">{darkMode ? '☀️' : '🌙'}</button>
@@ -593,7 +612,7 @@ const App = () => {
         
         <nav className="navbar">
           <div className="nav-brand" onClick={() => setMode('select')} style={{cursor: 'pointer'}}>
-            <span className="logo">📚 SmartLearn</span>
+            <span className="logo">🎯 SmartTest</span>
           </div>
           <div className="nav-controls">
             <button onClick={() => setDarkMode(!darkMode)} className="icon-btn">{darkMode ? '☀️' : '🌙'}</button>
