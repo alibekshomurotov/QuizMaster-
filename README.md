@@ -1,16 +1,56 @@
-# React + Vite
+# 🎯 SmartTest - Interaktiv Test Platformasi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SmartTest - bu dasturlash tillari bo'yicha bilimingizni sinab ko'rish va yangi bilimlarni o'zlashtirish uchun zamonaviy platforma.
 
-Currently, two official plugins are available:
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB)
+![Vite](https://img.shields.io/badge/Vite-5.0.8-646CFF)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📚 Live Demo
 
-## React Compiler
+Saytni ko'rish uchun: [https://alibekshomurotov.github.io/QuizMaster-/](https://alibekshomurotov.github.io/QuizMaster-/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Xususiyatlar
 
-## Expanding the ESLint configuration
+### 🔐 Foydalanuvchi tizimi
+- Kirish va ro'yxatdan o'tish
+- Shaxsiy kabinet
+- Test natijalarini saqlash
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📖 Test tizimi
+- 5 xil dasturlash tili:
+  - ⚛️ React.js (20+ savol)
+  - 🟨 JavaScript (20+ savol)
+  - 🐍 Python (20+ savol)
+  - 🌐 HTML/CSS (20+ savol)
+  - 🗄️ SQL (20+ savol)
+- Har bir test uchun 30 soniya vaqt
+- Avtomatik javob tekshirish
+- Batafsil natijalar tahlili
+
+### ✏️ Shaxsiy kartalar
+- O'z so'z va formulalaringizni qo'shing
+- Matematik misollar yarating
+- Kartalarni kategoriyalarga ajratish
+- O'z kartalaringiz asosida test topshirish
+
+### 🏆 Yutuqlar tizimi
+- Birinchi test - 🎯
+- Mukammal natija - 💯
+- 10 ta test - 🏆
+- 100 ta karta - 📚
+- Tezkor o'rganuvchi - ⚡
+
+### 📊 Reyting jadvali
+- Eng yaxshi 10 ta natija
+- Ishtirokchilar reytingi
+- Shaxsiy statistikangiz
+
+### 🌙 Qo'shimcha xususiyatlar
+- Dark / Light rejim
+- Konfeti animatsiyalari (100% natijada)
+- Responsive dizayn
+- LocalStorage saqlash
+
+## 🚀 Tez boshlash
